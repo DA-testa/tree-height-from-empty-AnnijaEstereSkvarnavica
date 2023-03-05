@@ -23,35 +23,32 @@ def compute_height(n, parents):
     return height(root)
    
 
+
 def main():
     input_type = input()
     if input_type == 'I':  
         n = int(input()) 
         parents = list(map(int, input().split()))
-        
     elif input_type == 'F':
         fileName = input().strip()
         if 'a' in fileName:
-            
             print("error")
             return
-        try:                                                           
+        try:
             with open('test/' + fileName, 'r') as f:
                 n = int(f.readline())
                 parents = list(map(int, f.readline().strip().split()))
         except FileNotFoundError:
             print("error")
             return
-        
         except ValueError:
             print("error")
             return
-        
     else:
-        print("error")
+        print("error: invalid input type")
         return
-                                                                     
-        
+    
+
     print(compute_height(n,parents))
     # implement input form keyboard and from files
     
