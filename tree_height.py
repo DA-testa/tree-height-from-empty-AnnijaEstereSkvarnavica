@@ -31,7 +31,6 @@ def compute_height(n, parents):
     # Your code here
     #return max_height
 
-
 def main():
     input_type = input()
     if input_type == 'I':  
