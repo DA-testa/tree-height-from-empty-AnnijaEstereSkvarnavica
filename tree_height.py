@@ -12,8 +12,8 @@ def compute_height(n, parents):
             telements[parents[j]].append(j)
             roots.discard(j)
     
-    if len(roots) != 1:
-        raise ValueError("Input does not represent a valid tree.")
+    #if len(roots) != 1:
+        #raise ValueError("Input does not represent a valid tree.")
     
     root = roots.pop()
     
@@ -46,7 +46,7 @@ def main():
             print("error")
             return
     else:
-        print("error: invalid input type")
+        print("error")                                         
         return
     
 
