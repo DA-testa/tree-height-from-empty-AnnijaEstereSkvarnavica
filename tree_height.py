@@ -30,7 +30,7 @@ def main():
     input_type = input()
     if input_type == 'I':  
         n = int(input()) 
-    elif(n = 0):
+    elif(n == 0):
         
         print("error")
     elif input_type == 'F':
