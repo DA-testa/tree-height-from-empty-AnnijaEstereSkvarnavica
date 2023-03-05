@@ -38,7 +38,7 @@ def main():
         try:
             with open('test/' + filename, 'r') as f:
                 x = int(f.readline())
-                parents = list(map(int,input().split())) 
+                parents = list(map(int, f.readline().strip().split()))
         except FileNotFoundError:
             print("error")
             return
