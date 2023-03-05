@@ -5,22 +5,28 @@ import threading
 
 
 def compute_height(n, parents):
-    telements = [[] for i in range(n)]                 
-    for j in range (n):
-        if parents[j] == -1: 
-            root = j 
-        else:
-            telements[parents[j]].append(j)
-    def dfs(node, depth):
-        nonlocal max_depth
-        max_depth = max(max_depth, depth)
-        for child in telements[node]:
-            dfs(child, depth+1)
+    # Create a list of lists to store the children of each node
+    children = [[] for _ in range(n)]
     
-    max_depth = 0
-    dfs(root, 1)
-    return max_depth
-
+    # For each node, append it to the list of children of its parent
+    for child, parent in enumerate(parents):
+        if parent != -1:
+            children[parent].append(child)
+    
+    # Define a recursive function to get the height of a node
+    def get_height(node):
+        if not children[node]:
+            # If the node has no children, its height is 1
+            return 1
+        else:
+            # If the node has children, its height is 1 plus the maximum height of its children
+            return 1 + max(get_height(child) for child in children[node])
+    
+    # Find the root node (the node with no parent) by finding the index of -1 in the parents list
+    root = parents.index(-1)
+    
+    # Return the height of the tree rooted at the root node
+    return get_height(root)
     
     # Your code here
     #return max_height
@@ -30,21 +36,27 @@ def main():
     input_type = input()
     if input_type == 'I':  
         n = int(input()) 
-    elif(n == 0):
+    
         
-        print("error")
+        
     elif input_type == 'F':
         fileName = input()
-        if 'a' in filename:
+        if 'a' in fileName:
             print("error")
             return
         try:
-            with open('test/' + filename, 'r') as f:
+            with open('test/' + fileName, 'r') as f:
                 n = int(f.readline())
                 parents = list(map(int, f.readline().strip().split()))
         except FileNotFoundError:
             print("error")
             return
+        
+        except ValueError:
+            print("error")
+            return
+        
+            
     else:
         print("error")                                                                     
         
