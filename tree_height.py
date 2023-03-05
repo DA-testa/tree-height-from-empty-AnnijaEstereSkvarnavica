@@ -5,16 +5,16 @@ import threading
 
 
 def compute_height(n, parents):
-    telements = [[] for i in range(x)]                 
-    for j in range (x):
+    telements = [[] for i in range(n)]                 
+    for j in range (n):
         if parents[j] == -1: 
-            root = 1 
+            root = j 
         else:
             telements[parents[j]].append(j)
     def dfs(node, depth):
         nonlocal max_depth
         max_depth = max(max_depth, depth)
-        for child in adj_list[node]:
+        for child in telements[node]:
             dfs(child, depth+1)
     
     max_depth = 0
@@ -27,23 +27,23 @@ def compute_height(n, parents):
 
 
 def main():
-    input = input()
-    if input == 'I':  
-        x = int(input()): 
-    elif input == 'F':
+    input_type = input()
+    if input_type == 'I':  
+        n = int(input()): 
+    elif input_type == 'F':
         fileName = input()
         if 'a' in filename:
             print("error")
             return
         try:
             with open('test/' + filename, 'r') as f:
-                x = int(f.readline())
+                n = int(f.readline())
                 parents = list(map(int, f.readline().strip().split()))
         except FileNotFoundError:
             print("error")
             return
     else:
-        ("error")                                                                     
+        print("error")                                                                     
         
     print(compute_height(n,parents))
 
