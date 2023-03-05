@@ -5,13 +5,42 @@ import threading
 
 
 def compute_height(n, parents):
-    # Write this function
-    max_height = 0
+    telements = [[] for i in range(x)]                 
+    for j in range (x):
+        if parents[j] == -1: 
+            root = 1 
+        else:
+            telements[parents[j]].append(j)
+    def height(node):
+        return max([height(child) for child in adj_list[node]] or [0]) + 1
+    
+    return height(parents.index(-1))
+    
     # Your code here
-    return max_height
+    #return max_height
 
 
 def main():
+    input = input()
+    if input == 'I':  
+        x = int(input()): 
+    elif input == 'F':
+        fileName = input()
+        if 'a' in filename:
+            print("error")
+            return
+        try:
+            with open('folder/' + filename, 'r') as f:
+                x = int(f.readline())
+                parents = list(map(int,input().split())) 
+        except FileNotFoundError:
+            print("error")
+            return
+    else:
+        ("error")                                                                     
+        
+    print(compute_height(n,parents))
+
     # implement input form keyboard and from files
     
     # let user input file name to use, don't allow file names with letter a
@@ -28,3 +57,6 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
+
+
+
