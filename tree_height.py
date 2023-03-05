@@ -26,16 +26,16 @@ def compute_height(n, parents):
 def main():
     input_type = input()
     if input_type == 'I':  
-        n =int(input()) 
-    
-        
+        n = int(input()) 
+        parents = list(map(int, input().split()))
         
     elif input_type == 'F':
         fileName = input().strip()
         if 'a' in fileName:
+            
             print("error")
             return
-        try:
+        try:                                                           
             with open('test/' + fileName, 'r') as f:
                 n = int(f.readline())
                 parents = list(map(int, f.readline().strip().split()))
@@ -47,7 +47,6 @@ def main():
             print("error")
             return
         
-            
     else:
         print("error")
         return
