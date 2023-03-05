@@ -36,7 +36,7 @@ def main():
             print("error")
             return
         try:
-            with open('folder/' + filename, 'r') as f:
+            with open('test/' + filename, 'r') as f:
                 x = int(f.readline())
                 parents = list(map(int,input().split())) 
         except FileNotFoundError:
