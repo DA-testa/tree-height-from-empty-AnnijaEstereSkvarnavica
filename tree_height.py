@@ -31,13 +31,14 @@ def main():
         parents = list(map(int, input().split()))
     elif input_type == 'F':
         fileName = input().strip()
+        path ="./test/" + fileName
         if 'a' in fileName:
             print("error")
             return
         try:
-            with open('test/' + fileName, 'r') as f:
+            with open(path,'r', encoding='utf-8') as f:
                 n = int(f.readline())
-                parents = list(map(int, f.readline().strip().split()))
+                parents = list(map(int, f.readline().split()))
         except FileNotFoundError:
             print("error")
             return
