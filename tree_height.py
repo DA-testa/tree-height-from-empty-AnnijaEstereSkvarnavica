@@ -33,38 +33,26 @@ def compute_height(n, parents):
 
 
 def main():
-   
-    text = input()
-    if "I" in text:
-       
-        n = int(input())
-        parents = list(map(int, input().split()))
-    elif "F" in text:
-
-   
-        path = './test/'
-        file = input()
-        folder = path + file
-        if "a" not in file:
-            try:
-                with open(folder) as f:
-                    n = int(f.readline())
-                    parents = list(map(int, f.readline().split()))
+    input = input()
+    if input == 'I':  
+        x = int(input()): 
+    elif input == 'F':
+        fileName = input()
+        if 'a' in filename:
+            print("error")
+            return
+        try:
+            with open('folder/' + filename, 'r') as f:
+                x = int(f.readline())
+                parents = list(map(int,input().split())) 
         except FileNotFoundError:
             print("error")
             return
-        
-        except ValueError:
-            print("error")
-            return
-        
-            
     else:
-        print("error")
-        return
-                                                                     
+        ("error")                                                                     
         
     print(compute_height(n,parents))
+
     # implement input form keyboard and from files
     
     # let user input file name to use, don't allow file names with letter a
