@@ -5,41 +5,33 @@ import threading
 
 
 def compute_height(n, parents):
-    # Create a list of lists to store the children of each node
-    children = [[] for _ in range(n)]
+    telements = [[] for i in range(n)]
+    roots = set(range(n))
+    for j in range(n):
+        if parents[j] != -1:
+            telements[parents[j]].append(j)
+            roots.discard(j)
     
-    # For each node, append it to the list of children of its parent
-    for child, parent in enumerate(parents):
-        if parent != -1:
-            children[parent].append(child)
+    if len(roots) != 1:
+        raise ValueError("Input does not represent a valid tree.")
     
-    # Define a recursive function to get the height of a node
-    def get_height(node):
-        if not children[node]:
-            # If the node has no children, its height is 1
-            return 1
-        else:
-            # If the node has children, its height is 1 plus the maximum height of its children
-            return 1 + max(get_height(child) for child in children[node])
+    root = roots.pop()
     
-    # Find the root node (the node with no parent) by finding the index of -1 in the parents list
-    root = parents.index(-1)
+    def height(node):
+        return max([height(child) for child in telements[node]] or [0]) + 1
     
-    # Return the height of the tree rooted at the root node
-    return get_height(root)
-    
-    # Your code here
-    #return max_height
+    return height(root)
+   
 
 def main():
     input_type = input()
     if input_type == 'I':  
-        n =(input()) 
+        n =int(input()) 
     
         
         
     elif input_type == 'F':
-        fileName = input()
+        fileName = input().strip()
         if 'a' in fileName:
             print("error")
             return
