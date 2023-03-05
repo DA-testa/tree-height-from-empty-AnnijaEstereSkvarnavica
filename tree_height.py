@@ -33,14 +33,14 @@ def compute_height(n, parents):
 
 
 def main():
-    input_type = input()
+    input_type = int(input())
     if input_type == 'I':  
         n = int(input()) 
     
         
         
     elif input_type == 'F':
-        fileName = input()
+        fileName = int(input()) 
         if 'a' in fileName:
             print("error")
             return
