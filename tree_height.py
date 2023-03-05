@@ -33,14 +33,14 @@ def compute_height(n, parents):
 
 
 def main():
-    input_type = int(input())
+    input_type = input()
     if input_type == 'I':  
         n = int(input()) 
     
         
         
     elif input_type == 'F':
-        fileName = input().strip()
+        fileName = input()
         if 'a' in fileName:
             print("error")
             return
@@ -58,10 +58,11 @@ def main():
         
             
     else:
-        print("error")                                                                     
+        print("error")
+        return
+                                                                     
         
     print(compute_height(n,parents))
-
     # implement input form keyboard and from files
     
     # let user input file name to use, don't allow file names with letter a
