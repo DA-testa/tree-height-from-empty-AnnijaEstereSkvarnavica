@@ -11,10 +11,16 @@ def compute_height(n, parents):
             root = 1 
         else:
             telements[parents[j]].append(j)
-    def height(node):
-        return max([height(child) for child in adj_list[node]] or [0]) + 1
+    def dfs(node, depth):
+        nonlocal max_depth
+        max_depth = max(max_depth, depth)
+        for child in adj_list[node]:
+            dfs(child, depth+1)
     
-    return height(parents.index(-1))
+    max_depth = 0
+    dfs(root, 1)
+    return max_depth
+
     
     # Your code here
     #return max_height
