@@ -40,7 +40,7 @@ def main():
         
         
     elif input_type == 'F':
-        fileName = int(input()) 
+        fileName = input().strip()
         if 'a' in fileName:
             print("error")
             return
